@@ -2,10 +2,12 @@
 .shadow
 .sidebar
   .sidebar__title Cart
-  CartItem
-    slot
-  CartTotal
-  .btn.btn-primary Proceed to Checkout
+  .sidebar__content
+    CartItem
+      slot
+  .sidebar__footer
+    CartTotal
+    .btn.btn-primary Proceed to Checkout
 </template>
 
 <script setup>
@@ -43,11 +45,20 @@ CartItem
   width: 400px;
   padding: 20px;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
   &__title {
     font-size: 24px;
     padding-bottom: 30px;
     text-align: center;
     color: #fff;
+  }
+  
+  &__content {
+    height: 100%;
+    overflow: auto;
   }
 }
 .btn.btn-primary {
@@ -57,7 +68,7 @@ CartItem
   padding: 1rem;
   text-align: center;
   cursor: pointer;
-  transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   &:hover {
     background-color: transparent;
     color: #c49b63;

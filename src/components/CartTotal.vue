@@ -6,13 +6,13 @@
     span $20.60
   .totals__item.totals__delivery
     span Delivery
-    span $20.60
+    span $0.00
   .totals__item.totals__discount
     span Discount
-    span $20.60
+    span $0.00
   .totals__item.totals__total
     span TOTAL
-    span $20.60
+    span.selected $20.60
 
 
 </template>
@@ -22,7 +22,7 @@
 
 <style lang="scss" scoped>
 .totals {
-  padding-top: 100px;
+  padding-top: 20px;
   &__title {
     text-transform: uppercase;
     font-size: 20px;
@@ -32,11 +32,15 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    color: #bfbfbf;
   }
   &__total {
     border-top: 1px solid rgb(255 255 255 / 25%);
     padding-top: 10px;
     text-transform: uppercase;
+    & .selected {
+      color: #c49b63;
+    }
   }
 }
 </style>
