@@ -1,0 +1,66 @@
+<template lang="pug">
+.shadow
+.sidebar
+  .sidebar__title Cart
+  CartItem
+    slot
+  CartTotal
+  .btn.btn-primary Proceed to Checkout
+</template>
+
+<script setup>
+import CartItem from './CartItem.vue'
+import CartTotal from './CartTotal.vue'
+
+CartTotal
+CartItem
+/* defineProps({
+  image: String,
+  title: String,
+  text: String,
+  price: Number,
+  isFaforite: Boolean,
+  isAdded: Boolean
+}) */
+</script>
+
+<style lang="scss" scoped>
+.shadow {
+  background-color: rgba(0 0 0 / .7);
+  backdrop-filter: blur(2px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.sidebar {
+  position: fixed;
+  background-color: #1d1a16;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  padding: 20px;
+  color: #fff;
+  &__title {
+    font-size: 24px;
+    padding-bottom: 30px;
+    text-align: center;
+    color: #fff;
+  }
+}
+.btn.btn-primary {
+  background: #c49b63;
+  border: 1px solid #c49b63;
+  color: #000;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out;
+  &:hover {
+    background-color: transparent;
+    color: #c49b63;
+  }
+}
+</style>
