@@ -1,16 +1,16 @@
 <template lang="pug">
-.product
+.product(
+  class="transition hover:-translate-y-2 hover:shadow-xl"
+)
   .product__image
     img(
       src="/images/products/1.jpg"
     )
   .product__title COFFEE CAPUCCINO
   .product__text A small river named Duden flows by their place and supplies
-  .product__price $5.90
+  .product__price 
   .product__buttons 
-    button(
-      
-    ) {{ isAdded ? 'Delete' : 'buy now' }}
+    button {{ isAdded ? 'Delete' : 'Add to cart' }}
 
 </template>
 
@@ -19,8 +19,8 @@ defineProps({
   image: String,
   title: String,
   text: String,
-  price: Number,
-  isFaforite: Boolean,
+  price: String,
+  isFavorite: Boolean,
   isAdded: Boolean
 })
 </script>
@@ -29,19 +29,24 @@ defineProps({
 .product {
   max-width: 200px;
   text-align: center;
+  padding-bottom: 30px;
   &__image {
     img {
       height: 200px;
+      border-radius: 6px;
+      border: 1px solid #c49b63;
     }
   }
   &__title {
     color: #fff;
+    padding: 10px 0;
   }
   &__price {
     color: #fff;
   }
   &__text {
     color: gray;
+    padding-bottom: 10px;
   }
   &__buttons {
     button {
