@@ -1,0 +1,65 @@
+<template lang="pug">
+.product(
+  class="transition hover:-translate-y-2 hover:shadow-xl"
+)
+  .product__image
+    img(
+      src="/images/products/1.jpg"
+    )
+  .product__title COFFEE CAPUCCINO
+  .product__text A small river named Duden flows by their place and supplies
+  .product__price 
+  .product__buttons 
+    button {{ isAdded ? 'Delete' : 'Add to cart' }}
+
+</template>
+
+<script setup>
+defineProps({
+  image: String,
+  title: String,
+  text: String,
+  price: String,
+  isFavorite: Boolean,
+  isAdded: Boolean
+})
+</script>
+
+<style lang="scss" scoped>
+.product {
+  max-width: 200px;
+  text-align: center;
+  padding-bottom: 30px;
+  &__image {
+    img {
+      height: 200px;
+      border-radius: 6px;
+      border: 1px solid #c49b63;
+    }
+  }
+  &__title {
+    color: #fff;
+    padding: 10px 0;
+  }
+  &__price {
+    color: #fff;
+  }
+  &__text {
+    color: gray;
+    padding-bottom: 10px;
+  }
+  &__buttons {
+    button {
+      border: 1px solid #c49b63;
+      background: transparent;
+      color: #c49b63;
+      padding: 0.375rem 0.75rem;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+      &:hover {
+        background: #c49b63;
+        color: white;
+      }
+    }
+  }
+}
+</style>

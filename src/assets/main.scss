@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #151111;
+  color: gray;
+}
+select {
+  background-color: #151111;
+  border: 1px solid #c49b63;
+  padding: 5px 5px;
+  min-width: 100px;
+  &:focus {
+    outline: none;
+  }
+  option {    
+    &:selection {
+      background-color: yellow;
+    }
+    &:checked {
+      background-color: #c49c6350;
+      color: #fff;
+    }
+  }
+}
+input {
+  background-color: #151111;
+  border: 1px solid #c49b63;
+  padding: 5px 5px;
+  min-width: 100px;
+  height: 34px;
+  &:focus {
+    background-color: #c49b6312;
+    outline: none;
+  }
+}
