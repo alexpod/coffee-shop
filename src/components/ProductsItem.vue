@@ -3,11 +3,11 @@
   class="transition hover:-translate-y-2 hover:shadow-xl"
 )
   .product__favorite(
-    :class="props.isFavorite ? 'product__favorite_active' : ''"
+    :class="props.content.isFavorites ? 'product__favorite_active' : ''"
   ) 
     // span.icon.icon-heard2
   .product__image(
-    @click="addToFavorite(props.id)"
+    @click="addToFavorite1(props.content)"
   )
     img(
       src="/images/products/1.jpg"
@@ -16,7 +16,9 @@
   .product__text A small river named Duden flows by their place and supplies
   .product__price
   .product__buttons 
-    button {{ props.isAdded ? 'Delete' : 'Add to cart' }}
+    button(
+      @click="addToCart1(props.content)"
+    ) {{ props.content.inCart ? 'Delete' : 'Add to cart' }}
 
 </template>
 
@@ -25,19 +27,14 @@ import { useMainStore } from '@/stores/index.js';
 const mainStore = useMainStore();
 
 const props = defineProps({
-  id: Number,
-  image: String,
-  title: String,
-  text: String,
-  price: String,
-  isFavorite: Boolean,
-  isAdded: Boolean
+  content: Object
 })
 
-const addToFavorite = (title) => {
-  console.log('!!!!', title)
-  mainStore.favorites = mainStore.favorites.push(...title)
-  return !props.isFavorite
+const addToFavorite1 = (item) => {
+  mainStore.addToFavorites(item)
+}
+const addToCart1 = (item) => {
+  mainStore.addToCart(item)
 }
 </script>
 
