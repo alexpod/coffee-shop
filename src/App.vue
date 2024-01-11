@@ -64,13 +64,11 @@ const getFavorites = async () => {
 }
 
 const getProducts = () => {
-  
   mainStore.getProducts()
 }
 
 onMounted( () => {
   getProducts()
-  
 })
 
 watch(filters, byFilters)

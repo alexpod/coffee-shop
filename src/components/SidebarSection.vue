@@ -44,6 +44,7 @@ const onSubmitOrder = () => {
   right: 0;
   bottom: 0;
   left: 0;
+  transition: all 1s ease-out;
 }
 .sidebar {
   position: fixed;
@@ -52,6 +53,7 @@ const onSubmitOrder = () => {
   top: 0;
   bottom: 0;
   width: 400px;
+  overflow: hidden;
   padding: 20px;
   color: #fff;
   display: flex;

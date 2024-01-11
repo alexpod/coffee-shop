@@ -46,7 +46,17 @@ export const useMainStore = defineStore('mainStore', () => {
 
   const addToFavorites = (object) => {
     const mainStore = useMainStore()
-    mainStore.products.push({ ...object, favorites: true})
+
+    mainStore.products.find(item => {
+      if (item.id === object.id) item.isFavorites = !item.isFavorites
+    })
+  }
+  const addToCart = (object) => {
+    const mainStore = useMainStore()
+
+    mainStore.products.find(item => {
+      if (item.id === object.id) item.inCart = !item.inCart
+    })
   }
   
   return {
@@ -56,7 +66,8 @@ export const useMainStore = defineStore('mainStore', () => {
     favorites,
     is_sidebar_open,
     addToFavorites,
-    getProducts
+    getProducts,
+    addToCart
   }
   
 })
