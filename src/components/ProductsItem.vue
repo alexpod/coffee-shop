@@ -2,20 +2,30 @@
 .product(
   class="transition hover:-translate-y-2 hover:shadow-xl"
 )
-  .product__image
+  .product__favorite(
+    :class="props.isFavorite ? 'product__favorite_active' : ''"
+  ) 
+    // span.icon.icon-heard2
+  .product__image(
+    @click="addToFavorite(props.id)"
+  )
     img(
       src="/images/products/1.jpg"
     )
   .product__title COFFEE CAPUCCINO
   .product__text A small river named Duden flows by their place and supplies
-  .product__price 
+  .product__price
   .product__buttons 
-    button {{ isAdded ? 'Delete' : 'Add to cart' }}
+    button {{ props.isAdded ? 'Delete' : 'Add to cart' }}
 
 </template>
 
 <script setup>
-defineProps({
+import { useMainStore } from '@/stores/index.js';
+const mainStore = useMainStore();
+
+const props = defineProps({
+  id: Number,
   image: String,
   title: String,
   text: String,
@@ -23,6 +33,12 @@ defineProps({
   isFavorite: Boolean,
   isAdded: Boolean
 })
+
+const addToFavorite = (title) => {
+  console.log('!!!!', title)
+  mainStore.favorites = mainStore.favorites.push(...title)
+  return !props.isFavorite
+}
 </script>
 
 <style lang="scss" scoped>
@@ -30,7 +46,21 @@ defineProps({
   max-width: 200px;
   text-align: center;
   padding-bottom: 30px;
+  position: relative;
+  &__favorite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.445);
+    width: 15px;
+    height: 15px;
+    &_active {
+      background-color: #c49b63;
+    }
+  }
   &__image {
+    cursor: pointer;
     img {
       height: 200px;
       border-radius: 6px;

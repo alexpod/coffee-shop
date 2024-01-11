@@ -4,6 +4,8 @@ import axios from 'axios'
 import HeaderSection from "./components/HeaderSection.vue"
 import SidebarSection from "./components/SidebarSection.vue"
 import ProductsList from "@/components/ProductsList.vue"
+import { useMainStore } from '@/stores/index.js';
+const mainStore = useMainStore();
 
 const items = ref([])
 const url = 'https://b5f7782b0525ab13.mokky.dev'
@@ -22,7 +24,7 @@ const onChangeSearch = (event) => {
 const byFilters = () => {
   console.log('filters', filters)
 }
-const getProducts = async () => {
+/* const getProducts = async () => {
   try {
     const { data } = await axios.get(`${url}/products`, {
       params: {
@@ -39,40 +41,43 @@ const getProducts = async () => {
   } catch (err) {
     console.log("Error: ", err);
   }
-}
+} */
 
 const getFavorites = async () => {
   try {
     const { data: favorites } = await axios.get(`${url}/favorites`)
-    items.value = data.items.map(item => {
-      const favorites = favorites.find(favorite => favorite.productId === item.id)
+    items.value = items.value.map(item => {
+      const favorite = favorites.find(favorite => favorite.productId === item.id)
       console.log('favorites', favorites)
-      if (!favorites) return item
+      if (!favorite) return item
 
       return {
         ...item,
         isFavorites: true,
-        favoritId: favorites.id        
+        favoriteId: favorite.id        
       }
     })
-    console.log(items.value)
+    console.log('items.value', items.value)
   } catch (err) {
     console.log("Error: ", err);
   }
 }
 
-onMounted(async () => {
-  await getProducts()
-  await getFavorites()
+const getProducts = () => {
+  
+  mainStore.getProducts()
+}
+
+onMounted( () => {
+  getProducts()
+  
 })
 
 watch(filters, byFilters)
 </script>
 
 <template lang="pug">
-.page(
-  class="w-4/5 m-auto"
-)
+.page
   HeaderSection
   .section
     .section__subtitle Discover
@@ -90,12 +95,12 @@ watch(filters, byFilters)
       placeholder="Search..."
       v-model="filters.search"
     )
-    p {{ filters.category }}
-    p {{ filters.search }}
   ProductsList(
-    :items="items"
+    :items="mainStore.products"
   )
-// SidebarSection
+SidebarSection(
+  v-if="mainStore.is_sidebar_open"
+)
 </template>
 
 <style lang="scss" scoped>

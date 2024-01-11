@@ -7,15 +7,24 @@
       slot
   .sidebar__footer
     CartTotal
-    .btn.btn-primary Proceed to Checkout
+    .btn.btn-primary(
+      @click="onSubmitOrder"
+    ) Proceed to Checkout
 </template>
 
 <script setup>
+import { useMainStore } from '@/stores'
 import CartItem from './CartItem.vue'
 import CartTotal from './CartTotal.vue'
+const mainStore = useMainStore()
 
 CartTotal
 CartItem
+
+
+const onSubmitOrder = () => {
+  mainStore.is_sidebar_open = false
+}
 /* defineProps({
   image: String,
   title: String,
