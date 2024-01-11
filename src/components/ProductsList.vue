@@ -1,11 +1,13 @@
 <template lang="pug">
-.products.flex.gap-2
+.products.flex
   ProductsItem(
     v-for="item in items"
     :key="item.id"
+    :id="item.id"
     :title="item.title"
     :image="item.image"
     :price="item.price"
+    :isFavorite="item.isFavorites"
   )
 </template>
 
@@ -19,6 +21,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .products {
+  gap: 15px;
   flex-wrap: wrap;
 }
 </style>
