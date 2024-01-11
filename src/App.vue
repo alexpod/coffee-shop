@@ -1,3 +1,32 @@
+<template lang="pug">
+.page(
+  :class="{'is-open': mainStore.is_sidebar_open}"
+)
+  HeaderSection
+  .section
+    .section__subtitle Discover
+    h2.section__title BEST COFFEE SELLERS
+    p Far far away, behind the word mountains, far from the countries Vokalia and <br />Consonantia, there live the blind texts.
+  .filters 
+    select(
+      @change="onChangeSelect"
+    )
+      option(value="id") ID
+      option(value="price") Price 
+      option(value="type") Type
+    input(
+      type="text"
+      placeholder="Search..."
+      v-model="filters.search"
+    )
+  ProductsList(
+    :items="mainStore.products"
+  )
+SidebarSection(
+  v-if="mainStore.is_sidebar_open"
+)
+</template>
+
 <script setup>
 import { onMounted, ref, reactive, watch } from "vue"
 import axios from 'axios'
@@ -73,33 +102,6 @@ onMounted( () => {
 
 watch(filters, byFilters)
 </script>
-
-<template lang="pug">
-.page
-  HeaderSection
-  .section
-    .section__subtitle Discover
-    h2.section__title BEST COFFEE SELLERS
-    p Far far away, behind the word mountains, far from the countries Vokalia and <br />Consonantia, there live the blind texts.
-  .filters 
-    select(
-      @change="onChangeSelect"
-    )
-      option(value="id") ID
-      option(value="price") Price 
-      option(value="type") Type
-    input(
-      type="text"
-      placeholder="Search..."
-      v-model="filters.search"
-    )
-  ProductsList(
-    :items="mainStore.products"
-  )
-SidebarSection(
-  v-if="mainStore.is_sidebar_open"
-)
-</template>
 
 <style lang="scss" scoped>
 .section {

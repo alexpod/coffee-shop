@@ -8,6 +8,7 @@
     // span.icon.icon-heard2
   .product__image(
     @click="addToFavorite1(props.content)"
+    title="Move to favorites"
   )
     img(
       src="/images/products/1.jpg"
@@ -44,6 +45,13 @@ const addToCart1 = (item) => {
   text-align: center;
   padding-bottom: 30px;
   position: relative;
+  border-radius: 6px;
+  padding: 5px 5px 15px;
+  &:hover {
+    .product__image {
+      box-shadow: 1px 1px 34px -7px rgba(209, 196, 115, 0.8);
+    }
+  }
   &__favorite {
     position: absolute;
     top: 10px;
