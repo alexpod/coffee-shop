@@ -8,6 +8,7 @@ export const useMainStore = defineStore('mainStore', () => {
   const loader = ref(false)
   const favorites = reactive([])
   const cart = reactive([])
+  const cart_counter = reactive(0)
   const is_sidebar_open = ref(false)
   const products = ref([])
   // const posts = ref([])
@@ -31,42 +32,47 @@ export const useMainStore = defineStore('mainStore', () => {
     }
   }
 
-  
- /*  const getPosts = async (page, limit) => {
-    const url = 'https://b5f7782b0525ab13.mokky.dev'
-
-    const res = await fetch(url + new URLSearchParams({
-      page: page,
-      limit: limit,
-    }));
-    const data = await res.json();
-    pageTotal.value = Math.ceil(res.headers.get('X-Total-Count') / limit);
-    posts.value = data;
-  } */
-
   const addToFavorites = (object) => {
     const mainStore = useMainStore()
-
     mainStore.products.find(item => {
       if (item.id === object.id) item.isFavorites = !item.isFavorites
     })
   }
+
   const addToCart = (object) => {
     const mainStore = useMainStore()
-
     mainStore.products.find(item => {
       if (item.id === object.id) item.inCart = !item.inCart
     })
+  }
+
+  const countProductsInCart = () => {
+    const mainStore = useMainStore()
+    return mainStore.products.filter(item => item.inCart === true ).length
+  }
+
+  const getProductsListInCart = () => {
+    const mainStore = useMainStore()
+    return mainStore.products.filter(item => item.inCart)
+  }
+
+  const getProductsTotalPrice = () => {
+    const mainStore = useMainStore()
+    return mainStore.products.filter(item => item.inCart).reduce((accumulator, item) => accumulator + item.price, 0)
   }
   
   return {
     loader,
     cart,
+    cart_counter,
     products,
     favorites,
     is_sidebar_open,
     addToFavorites,
     getProducts,
+    getProductsListInCart,
+    getProductsTotalPrice,
+    countProductsInCart,
     addToCart
   }
   

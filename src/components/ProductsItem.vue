@@ -8,17 +8,19 @@
     // span.icon.icon-heard2
   .product__image(
     @click="addToFavorite1(props.content)"
+    title="Move to favorites"
   )
     img(
-      src="/images/products/1.jpg"
+      :src="content.image"
     )
-  .product__title COFFEE CAPUCCINO
-  .product__text A small river named Duden flows by their place and supplies
-  .product__price
-  .product__buttons 
-    button(
-      @click="addToCart1(props.content)"
-    ) {{ props.content.inCart ? 'Delete' : 'Add to cart' }}
+  .product__title {{ content.title }}
+  .product__text {{ content.description }}
+  .product__actions
+    .product__buttons 
+      button(
+        @click="addToCart1(props.content)"
+      ) {{ props.content.inCart ? 'Remove from cart' : 'Add to cart' }}
+    .product__price $ {{ content.price }}
 
 </template>
 
@@ -40,10 +42,19 @@ const addToCart1 = (item) => {
 
 <style lang="scss" scoped>
 .product {
-  max-width: 200px;
-  text-align: center;
+  max-width: 350px;
   padding-bottom: 30px;
   position: relative;
+  border-radius: 6px;
+  padding: 5px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &:hover {
+    .product__image {
+      box-shadow: 1px 1px 34px -7px rgba(209, 196, 115, 0.8);
+    }
+  }
   &__favorite {
     position: absolute;
     top: 10px;
@@ -58,18 +69,30 @@ const addToCart1 = (item) => {
   }
   &__image {
     cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #c49b63;
+    overflow: hidden;
+    height: 300px;
     img {
-      height: 200px;
-      border-radius: 6px;
-      border: 1px solid #c49b63;
+      min-width: 300px;
+      margin-top: -50%;
     }
   }
   &__title {
     color: #fff;
     padding: 10px 0;
+    font-size: 28px;
+  }
+  &__actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
   }
   &__price {
     color: #fff;
+    font-size: 28px;
+    padding-bottom: 10px;
   }
   &__text {
     color: gray;

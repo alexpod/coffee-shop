@@ -6,6 +6,9 @@ header.header.flex.justify-between.shadow-xl.rounded-md.min-h-20.items-center
   .header__cart(
     @click="openSidebarCart()"
   ) Cart
+    span.header__cart-counter(
+      v-if="getCountProductsCart() > 0"
+    ) {{ getCountProductsCart() }}
   .header__price 0.0000
   .header__favourite Favourites
   .header__profile Profile
@@ -15,6 +18,10 @@ header.header.flex.justify-between.shadow-xl.rounded-md.min-h-20.items-center
 import { useMainStore } from "@/stores"
 
 const mainStore = useMainStore()
+
+const getCountProductsCart = () => {
+  return mainStore.countProductsInCart()
+}
 
 const openSidebarCart = () => {
 
@@ -45,6 +52,27 @@ const openSidebarCart = () => {
       text-align: center;
       color: #fff;
       letter-spacing: 5px;
+    }
+  }
+  &__cart {
+    position: relative;
+    cursor: pointer;
+    &-counter {
+      border: 1px solid #c49b63;
+      background-color: #c49b63;
+      justify-content: center;
+      border-radius: 50%;
+      position: absolute;
+      top: -10px;
+      right: -29px;
+      min-width: 20px;
+      height: 24px;
+      line-height: 17px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 3px;
+      color: #000;
     }
   }
 }
