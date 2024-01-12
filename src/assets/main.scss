@@ -35,6 +35,22 @@ input {
     outline: none;
   }
 }
+
+::-webkit-scrollbar {
+  width: 7px;
+  // height: 3px;
+  height: 0;
+}
+::-webkit-scrollbar-button {
+  height: 0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c49b63;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(#fff, .12);
+}
+
 .page {
   max-width: 1200px;
   margin: auto;

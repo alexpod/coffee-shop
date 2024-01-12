@@ -1,9 +1,9 @@
 <template lang="pug">
 .totals
-  .totals__title CART TOTALS
+  .totals__title CART TOTAL
   .totals__item.totals__subtotal
     span Subtotal
-    span $20.60
+    span $ {{ mainStore.getProductsTotalPrice() }}
   .totals__item.totals__delivery
     span Delivery
     span $0.00
@@ -12,12 +12,14 @@
     span $0.00
   .totals__item.totals__total
     span TOTAL
-    span.selected $20.60
-
+    span.selected $ {{ mainStore.getProductsTotalPrice() }}
 
 </template>
 
 <script setup>
+import { useMainStore } from "@/stores";
+
+const mainStore = useMainStore()
 </script>
 
 <style lang="scss" scoped>

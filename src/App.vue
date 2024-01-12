@@ -1,6 +1,6 @@
 <template lang="pug">
 .page(
-  :class="{'is-open': mainStore.is_sidebar_open}"
+  :class="{'is-open-sidebar': mainStore.is_sidebar_open}"
 )
   HeaderSection
   .section
@@ -104,6 +104,10 @@ watch(filters, byFilters)
 </script>
 
 <style lang="scss" scoped>
+.is-open-sidebar {
+  overflow: hidden;
+  height: 100vh;
+}
 .section {
   text-align: center;
   &__title {

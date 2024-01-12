@@ -2,55 +2,13 @@
 .product
   .product__image
     img(
-      src="/images/products/1.jpg"
+      :src="props.content.image"
     )
   .product__content
     .product__row
-      .product__title Coffee capuccino
-      .product__price $5.90
-    .product__text A small river named Duden flows by their place and supplies
-    //.product__buttons 
-      button(
-        
-      ) X
-.product
-  .product__image
-    img(
-      src="/images/products/2.jpg"
-    )
-  .product__content
-    .product__row
-      .product__title Coffee capuccino
-      .product__price $5.90
-    .product__text A small river named Duden flows by their place and supplies
-    //.product__buttons 
-      button(
-        
-      ) X
-.product
-  .product__image
-    img(
-      src="/images/products/3.jpg"
-    )
-  .product__content
-    .product__row
-      .product__title Coffee capuccino
-      .product__price $5.90
-    .product__text A small river named Duden flows by their place and supplies
-    //.product__buttons 
-      button(
-        
-      ) X
-.product
-  .product__image
-    img(
-      src="/images/products/4.jpg"
-    )
-  .product__content
-    .product__row
-      .product__title Coffee capuccino
-      .product__price $5.90
-    .product__text A small river named Duden flows by their place and supplies
+      .product__title {{ props.content.title }}
+      .product__price $ {{ props.content.price }}
+    .product__text {{ props.content.description }}
     //.product__buttons 
       button(
         
@@ -59,13 +17,8 @@
 </template>
 
 <script setup>
-defineProps({
-  image: String,
-  title: String,
-  text: String,
-  price: Number,
-  isFavorite: Boolean,
-  isAdded: Boolean
+const props = defineProps({
+  content: Object,
 })
 </script>
 
@@ -119,7 +72,6 @@ defineProps({
   &__text {
     color: gray;
     font-size: 12px;
-    max-width: 180px;
   }
   &__buttons {
     button {

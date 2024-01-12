@@ -34,14 +34,13 @@ export const useMainStore = defineStore('mainStore', () => {
 
   const addToFavorites = (object) => {
     const mainStore = useMainStore()
-
     mainStore.products.find(item => {
       if (item.id === object.id) item.isFavorites = !item.isFavorites
     })
   }
+
   const addToCart = (object) => {
     const mainStore = useMainStore()
-
     mainStore.products.find(item => {
       if (item.id === object.id) item.inCart = !item.inCart
     })
@@ -49,8 +48,17 @@ export const useMainStore = defineStore('mainStore', () => {
 
   const countProductsInCart = () => {
     const mainStore = useMainStore()
-
     return mainStore.products.filter(item => item.inCart === true ).length
+  }
+
+  const getProductsListInCart = () => {
+    const mainStore = useMainStore()
+    return mainStore.products.filter(item => item.inCart)
+  }
+
+  const getProductsTotalPrice = () => {
+    const mainStore = useMainStore()
+    return mainStore.products.filter(item => item.inCart).reduce((accumulator, item) => accumulator + item.price, 0)
   }
   
   return {
@@ -62,6 +70,8 @@ export const useMainStore = defineStore('mainStore', () => {
     is_sidebar_open,
     addToFavorites,
     getProducts,
+    getProductsListInCart,
+    getProductsTotalPrice,
     countProductsInCart,
     addToCart
   }
