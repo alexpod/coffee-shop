@@ -52,6 +52,28 @@ input {
 }
 
 .page {
+  // max-width: 1200px;
+  margin: auto;
+}
+.container {
   max-width: 1200px;
   margin: auto;
+}
+
+.button {
+  cursor: pointer;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.15s ease-in-out;
+  &__primary {
+    background: #c49b63;
+    border: 1px solid #c49b63;
+    color: #000;
+    padding: 0 20px;
+    &:hover {
+      background: darken(#c49b63, 10%);
+    }
+  }
 }

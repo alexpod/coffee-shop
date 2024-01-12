@@ -1,17 +1,18 @@
 <template lang="pug">
 header.header.flex.justify-between.shadow-xl.rounded-md.min-h-20.items-center
-  .header__logo Coffee
-    span BLEND
+  .header__container.container
+    .header__logo Coffee
+      span BLEND
 
-  .header__cart(
-    @click="openSidebarCart()"
-  ) Cart
-    span.header__cart-counter(
-      v-if="getCountProductsCart() > 0"
-    ) {{ getCountProductsCart() }}
-  .header__price 0.0000
-  .header__favourite Favourites
-  .header__profile Profile
+    .header__cart(
+      @click="openSidebarCart()"
+    ) Cart
+      span.header__cart-counter(
+        v-if="getCountProductsCart() > 0"
+      ) {{ getCountProductsCart() }}
+    .header__price 0.0000
+    .header__favourite Favourites
+    .header__profile Profile
 </template>
 
 <script setup>
@@ -40,6 +41,13 @@ const openSidebarCart = () => {
 <style lang="scss" scoped>
 .header {
   color: #fff;
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  &__container {
+    display: flex;
+  }
   &__logo {
     font-family: "Josefin Sans", Arial, sans-serif;
     font-size: 22px;

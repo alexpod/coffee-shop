@@ -3,22 +3,25 @@
   :class="{'is-open-sidebar': mainStore.is_sidebar_open}"
 )
   HeaderSection
-  .section
-    .section__subtitle Discover
-    h2.section__title BEST COFFEE SELLERS
-    p Far far away, behind the word mountains, far from the countries Vokalia and <br />Consonantia, there live the blind texts.
-  .filters 
-    select(
-      @change="onChangeSelect"
-    )
-      option(value="id") ID
-      option(value="price") Price 
-      option(value="type") Type
-    input(
-      type="text"
-      placeholder="Search..."
-      v-model="filters.search"
-    )
+  BillboardSection
+  .heading-section
+    .heading-section__container.container
+      .heading-section__subtitle Discover
+      h2.heading-section__title BEST COFFEE SELLERS
+      p Far far away, behind the word mountains, far from the countries Vokalia and <br />Consonantia, there live the blind texts.
+  .filters
+    .filters__container.container
+      select(
+        @change="onChangeSelect"
+      )
+        option(value="id") ID
+        option(value="price") Price 
+        option(value="type") Type
+      input(
+        type="text"
+        placeholder="Search..."
+        v-model="filters.search"
+      )
   ProductsList(
     :items="mainStore.products"
   )
@@ -33,6 +36,8 @@ import axios from 'axios'
 import HeaderSection from "./components/HeaderSection.vue"
 import SidebarSection from "./components/SidebarSection.vue"
 import ProductsList from "@/components/ProductsList.vue"
+import BillboardSection from "@/components/BillboardSection.vue"
+
 import { useMainStore } from '@/stores/index.js';
 const mainStore = useMainStore();
 
@@ -108,8 +113,9 @@ watch(filters, byFilters)
   overflow: hidden;
   height: 100vh;
 }
-.section {
+.heading-section {
   text-align: center;
+  padding: 60px 0;
   &__title {
     font-family: "Poppins", Arial, sans-serif;
     background: #151111;
@@ -136,6 +142,7 @@ watch(filters, byFilters)
 .filters {
   padding: 50px 0 30px;
 }
+
   select {
     margin-right: 10px;
   }
