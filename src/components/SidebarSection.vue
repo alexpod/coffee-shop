@@ -52,6 +52,7 @@ const getProductsListInCart = () => {
   bottom: 0;
   left: 0;
   transition: all 1s ease-out;
+  z-index: 11;
 }
 .sidebar {
   position: fixed;
@@ -66,6 +67,7 @@ const getProductsListInCart = () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 12;
   
   &__title {
     font-size: 24px;
