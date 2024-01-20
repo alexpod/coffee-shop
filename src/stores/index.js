@@ -33,32 +33,27 @@ export const useMainStore = defineStore('mainStore', () => {
   }
 
   const addToFavorites = (object) => {
-    const mainStore = useMainStore()
-    mainStore.products.find(item => {
+    products.value.find(item => {
       if (item.id === object.id) item.isFavorites = !item.isFavorites
     })
   }
 
   const addToCart = (object) => {
-    const mainStore = useMainStore()
-    mainStore.products.find(item => {
+    products.value.find(item => {
       if (item.id === object.id) item.inCart = !item.inCart
     })
   }
 
   const countProductsInCart = () => {
-    const mainStore = useMainStore()
-    return mainStore.products.filter(item => item.inCart === true ).length
+    return products.value.filter(item => item.inCart === true ).length
   }
 
   const getProductsListInCart = () => {
-    const mainStore = useMainStore()
-    return mainStore.products.filter(item => item.inCart)
+    return products.value.filter(item => item.inCart)
   }
 
   const getProductsTotalPrice = () => {
-    const mainStore = useMainStore()
-    return mainStore.products.filter(item => item.inCart).reduce((accumulator, item) => accumulator + item.price, 0)
+    return products.value.filter(item => item.inCart).reduce((accumulator, item) => accumulator + item.price, 0)
   }
   
   return {
