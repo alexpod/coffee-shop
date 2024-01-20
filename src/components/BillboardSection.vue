@@ -15,7 +15,7 @@
 
 <style lang="scss" scoped>
 .billboard {
-  background: url('/images/background/2.jpg') center center no-repeat;
+  background: url('/images/background/1-1.jpg') center center no-repeat;
   background-size: cover;
   backdrop-filter: blur(5px);
   min-height: 750px;
