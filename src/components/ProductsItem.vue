@@ -11,7 +11,7 @@
     title="Move to favorites"
   )
     img(
-      :src="content.image"
+      :src="`images/products/${content.id}.jpg`"
     )
   .product__title {{ content.title }}
   .product__text {{ content.description }}
@@ -70,12 +70,11 @@ const addToCart1 = (item) => {
   &__image {
     cursor: pointer;
     border-radius: 6px;
-    border: 1px solid #c49b63;
+    border: 1px solid #c49b6396;
     overflow: hidden;
-    height: 300px;
+    height: 340px;
     img {
       min-width: 300px;
-      margin-top: -50%;
     }
   }
   &__title {
