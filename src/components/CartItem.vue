@@ -2,7 +2,7 @@
 .product
   .product__image
     img(
-      :src="props.content.image"
+      :src="`images/products/${props.content.id}.jpg`"
     )
   .product__content
     .product__row
@@ -34,7 +34,8 @@ const props = defineProps({
     overflow: hidden;
     margin-right: 15px;
     img {
-      height: 80px;
+      height: 60px;
+      width: 60px;
     }
   }
   &__row {
