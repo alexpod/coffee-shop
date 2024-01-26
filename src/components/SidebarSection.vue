@@ -16,7 +16,7 @@
     img(
         src="/images/cup.png"
       )
-    .sidebar__message-text Please add product to cart
+    .sidebar__message-text Please add <br />product to cart
   .sidebar__footer
     CartTotal(
       v-if="getProductsListInCart().length > 0"
@@ -86,6 +86,7 @@ const getProductsListInCart = () => {
     img {
       display: block;
       margin: 0 auto 20px;
+      max-width: 100px;
     }
     &-text {
       font-size: 24px;
