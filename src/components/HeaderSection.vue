@@ -50,6 +50,8 @@ const openSidebarCart = () => {
   }
   &__price {
     background-color: #c49b63;
+    color: #000;
+    font-weight: 600;
     padding: 2px 10px;
     border-radius: 4px;
   }
@@ -83,11 +85,11 @@ const openSidebarCart = () => {
       justify-content: center;
       border-radius: 50%;
       position: absolute;
-      top: -10px;
-      right: -29px;
-      min-width: 20px;
-      height: 24px;
-      line-height: 17px;
+      top: -8px;
+      right: -22px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 10px;
       text-align: center;
       font-weight: bold;
       font-size: 14px;
