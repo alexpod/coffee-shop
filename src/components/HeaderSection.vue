@@ -4,7 +4,7 @@ header.header.flex.justify-between.shadow-xl.rounded-md.min-h-20.items-center
     .header__logo Coffee
       span BLEND
     .header__navigation
-      .header__price 0.0000
+      .header__price {{ mainStore.getProductsTotalPrice() ? `$ ${mainStore.getProductsTotalPrice()}` : '$ 0.00'}}
       .header__favourite Favourites
       .header__profile Profile
       .header__cart(
@@ -48,11 +48,17 @@ const openSidebarCart = () => {
   &__container {
     display: flex;
   }
+  &__price {
+    background-color: #c49b63;
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
   &__navigation {
     display: flex;
     width: 100%;
     gap: 20px;
     justify-content: right;
+    align-items: center;
   }
   &__logo {
     font-family: "Josefin Sans", Arial, sans-serif;
