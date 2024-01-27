@@ -4,7 +4,7 @@
     .billboard__subheading Welcome
     .billboard__heading Creamy Hot <br />and Ready to Serve
     .billboard__description A small river named Duden flows by their place and supplies <br />it with the necessary regelialia.
-    .billboard__action
+    // .billboard__action
       .button.button__primary Order now
 
 </template>
