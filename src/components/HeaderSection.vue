@@ -4,15 +4,15 @@ header.header.flex.justify-between.shadow-xl.rounded-md.min-h-20.items-center
     .header__logo Coffee
       span BLEND
     .header__navigation
-      .header__price {{ mainStore.getProductsTotalPrice() ? `$ ${mainStore.getProductsTotalPrice()}` : '$ 0.00'}}
-      .header__favourite Favourites
-      .header__profile Profile
+      .header__favourite Favourites {{ mainStore.favorites.value }}
+      // .header__profile Profile
       .header__cart(
         @click="openSidebarCart()"
       ) Cart
         span.header__cart-counter(
           v-if="getCountProductsCart() > 0"
         ) {{ getCountProductsCart() }}
+      .header__price {{ mainStore.getProductsTotalPrice() ? `$ ${mainStore.getProductsTotalPrice()}` : '$ 0.00'}}
 </template>
 
 <script setup>
