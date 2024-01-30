@@ -4,7 +4,7 @@ header.header.flex.justify-between.shadow-xl.rounded-md.min-h-20.items-center
     .header__logo Coffee
       span BLEND
     .header__navigation
-      .header__favourite Favourites {{ mainStore.favorites.value }}
+      .header__favourite Favourites {{ mainStore.favorites.length }}
       // .header__profile Profile
       .header__cart(
         @click="openSidebarCart()"
@@ -54,6 +54,7 @@ const openSidebarCart = () => {
     font-weight: 600;
     padding: 2px 10px;
     border-radius: 4px;
+    margin-left: 20px;
   }
   &__navigation {
     display: flex;

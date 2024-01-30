@@ -11,7 +11,6 @@ export const useMainStore = defineStore('mainStore', () => {
   const cart_counter = reactive(0)
   const is_sidebar_open = ref(false)
   const products = ref([])
-  // const posts = ref([])
   const pageTotal = ref(0)
 
   const getProducts = async () => {
@@ -34,9 +33,21 @@ export const useMainStore = defineStore('mainStore', () => {
 
   const addToFavorites = (object) => {
     products.value.find(item => {
-      if (item.id === object.id) item.isFavorites = !item.isFavorites
+      if (item.id === object.id && !item.isFavorites) {
+        favorites.value = favorites.push(item)
+        item.isFavorites = !item.isFavorites
+      } else if (item.id === object.id && item.isFavorites) {
+        favorites.value = favorites.pop(item)
+        item.isFavorites = !item.isFavorites
+      }
     })
   }
+
+  /* const getFavoriteCounts = () => {
+    products.value.find(item => {
+      if (item.isFavorites) favorites.push(item.isFavorites)
+    })
+  } */
 
   const addToCart = (object) => {
     products.value.find(item => {
@@ -53,7 +64,7 @@ export const useMainStore = defineStore('mainStore', () => {
   }
 
   const getProductsTotalPrice = () => {
-    return products.value.filter(item => item.inCart).reduce((accumulator, item) => accumulator + item.price, 0)
+    return products.value.filter(item => item.inCart).reduce((accumulator, item) => accumulator + item.price, 0).toFixed(2)
   }
   
   return {
